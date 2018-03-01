@@ -1,0 +1,26 @@
+Bad1.java
+
+Bad1.java:8: error: reached end of file while parsing
+    }
+
+The error happens during compile time and it errors because there was not an ending curly brace
+
+Bad2.java
+
+Bad2.java:1: error: class BAD2 is public, should be declared in a file named BAD2.java
+public class BAD2 {
+
+The error happens during compile time and this is because the class is not named Bad2.java instead it is BAD2.
+
+Bad3.java
+
+This homework is due January Exception in thread "main" java.util.IllegalFormatConversionException: d != java.lang.String
+        at java.base/java.util.Formatter$FormatSpecifier.failConversion(Unknown Source)
+        at java.base/java.util.Formatter$FormatSpecifier.printInteger(Unknown Source)
+        at java.base/java.util.Formatter$FormatSpecifier.print(Unknown Source)
+        at java.base/java.util.Formatter.format(Unknown Source)
+        at java.base/java.io.PrintStream.format(Unknown Source)
+        at java.base/java.io.PrintStream.printf(Unknown Source)
+        at Bad3.main(Bad3.java:7)
+
+Another error that I found was that the main problem originates from the fact that you are trying to take a string and output it as a decimal which makes the code very unhappy
