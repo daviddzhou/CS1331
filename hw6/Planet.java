@@ -1,6 +1,6 @@
 public class Planet extends AstronomicalObject {
-    final int radius;
-    private int orbitCount;
+    protected final double radius;
+    protected int orbitCount;
 
 	/**
 	* Default empty Planet constructor
@@ -12,7 +12,7 @@ public class Planet extends AstronomicalObject {
 	/**
 	* Default Planet constructor - need to figure out how to incorporate final int into constructor
 	*/
-	public Planet(String name, int radius, int orbitCount) {
+	public Planet(String name, double radius, int orbitCount) {
 		super(this.name);
 
 		this.orbitCount = orbitCount;
@@ -20,7 +20,7 @@ public class Planet extends AstronomicalObject {
 
 	/**
 	* Create string representation of Planet for printing
-	* @return
+	* @return string representation of Planet for printing
 	*/
 	@Override
 	public String toString() {
@@ -36,7 +36,7 @@ public class Planet extends AstronomicalObject {
 
 	/**
 	* Returns value of orbitCount
-	* @return
+	* @return value of orbitCount
 	*/
 	public int getOrbitCount() {
 		return orbitCount;
@@ -44,7 +44,7 @@ public class Planet extends AstronomicalObject {
 
 	/**
 	* Sets new value of orbitCount
-	* @param
+	* @param orbitCount integer value of orbitCount that you will be setting it to
 	*/
 	public void setOrbitCount(int orbitCount) {
 		this.orbitCount = orbitCount;

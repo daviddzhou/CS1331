@@ -30,7 +30,7 @@ public class Star extends AstronomicalObject {
 
 	/**
 	* Create string representation of Star for printing
-	* @return
+	* @return string representation of Star for printing
 	*/
 	@Override
 	public String toString() {
@@ -43,7 +43,7 @@ public class Star extends AstronomicalObject {
 
 	/**
 	* Returns value of color
-	* @return
+	* @return value of color
 	*/
 	public Color getColor() {
 		return color;
@@ -51,7 +51,7 @@ public class Star extends AstronomicalObject {
 
 	/**
 	* Sets new value of color
-	* @param
+	* @param color the enum color that you want to set your current color to
 	*/
 	public void setColor(Color color) {
 		this.color = color;

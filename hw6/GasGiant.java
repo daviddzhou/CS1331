@@ -11,9 +11,11 @@ public class GasGiant extends Planet {
 	/**
 	* Default GasGiant constructor - how can you implement code from your previous superclass to make this work
 	*/
-	public GasGiant(int numStorms) {
-		super();
-		this.numStorms = numStorms;
+	public GasGiant(String name, double rad, int orbits, int storms) {
+		super(this.name);
+        super(this.radius);
+        super(this.orbitCount)
+		this.storms = numStorms;
 	}
 
     /**
@@ -26,7 +28,7 @@ public class GasGiant extends Planet {
 
 	/**
 	* Create string representation of GasGiant for printing
-	* @return
+	* @return string representation OF GasGiant for printing
 	*/
 	@Override
 	public String toString() {
@@ -35,7 +37,7 @@ public class GasGiant extends Planet {
 
 	/**
 	* Returns value of numStorms
-	* @return
+	* @return value of numStorms
 	*/
 	public int getNumStorms() {
 		return numStorms;

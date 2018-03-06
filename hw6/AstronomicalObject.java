@@ -17,7 +17,7 @@ public class AstronomicalObject {
 
 	/**
 	* Create string representation of AstronomicalObject for printing
-	* @return
+	* @return string representation of AstronomicalObject for printing
 	*/
 	@Override
 	public String toString() {
@@ -26,7 +26,7 @@ public class AstronomicalObject {
 
 	/**
 	* Returns value of name
-	* @return
+	* @return value of name
 	*/
 	public String getName() {
 		return name;
