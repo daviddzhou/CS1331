@@ -33,8 +33,8 @@ public class Planet extends AstronomicalObject {
     */
     @Override
     public String toString() {
-        return "Planet" + super.toString() + "." + "Radius:"
-            + RADIUS + "." + "Orbits completed:" + orbitCount;
+        return "Planet " + super.toString() + ". " + "Radius: "
+            + RADIUS + "." + " Orbits completed: " + orbitCount;
     }
 
     //how can you implement if your star cannot have planets

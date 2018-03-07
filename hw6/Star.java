@@ -48,10 +48,10 @@ public class Star extends AstronomicalObject {
     @Override
     public String toString() {
         if (isSun) {
-            return "Star " + name + "." + "Color: " + color + "."
+            return "Star " + name + ". " + "Color: " + color + ". "
                 + "This Star can have planets";
         } else {
-            return "Star " + name + "." + "Color: " + color + "."
+            return "Star " + name + ". " + "Color: " + color + ". "
                 + "This Star can't have planets";
         }
     }

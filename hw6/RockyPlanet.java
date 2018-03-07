@@ -48,11 +48,11 @@ public class RockyPlanet extends Planet {
     @Override
     public String toString() {
         if (hasLife) {
-            return "RockyPlanet" + super.toString()
-                + "This planet can have life.";
+            return "RockyPlanet " + super.toString()
+                + " This planet can have life.";
         } else {
-            return "RockyPlanet" + super.toString()
-                + "This planet cannot have life";
+            return "RockyPlanet " + super.toString()
+                + " This planet cannot have life.";
         }
     }
 

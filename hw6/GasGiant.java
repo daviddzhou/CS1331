@@ -40,7 +40,7 @@ public class GasGiant extends Planet {
     */
     @Override
     public String toString() {
-        return "Gas Giant " + super.toString() + "Number of storms: "
+        return "Gas Giant " + super.toString() + " Number of storms: "
             + numStorms;
     }
 
