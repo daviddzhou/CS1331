@@ -5,7 +5,7 @@
 */
 
 public class Planet extends AstronomicalObject {
-    protected final double RADIUS;
+    protected final double aRADIUS;
     protected int orbitCount;
 
     /**
@@ -13,7 +13,7 @@ public class Planet extends AstronomicalObject {
     */
     public Planet() {
         super();
-        RADIUS = 0;
+        aRADIUS = 0;
     }
 
     /**
@@ -24,7 +24,7 @@ public class Planet extends AstronomicalObject {
     */
     public Planet(String name, double rad, int orbits) {
         super(name);
-        RADIUS = rad;
+        aRADIUS = rad;
         orbitCount = orbits;
     }
 
@@ -35,7 +35,7 @@ public class Planet extends AstronomicalObject {
     @Override
     public String toString() {
         return "Planet " + super.toString() + "Radius: "
-            + RADIUS + "." + " Orbits completed: " + orbitCount;
+            + aRADIUS + "." + " Orbits completed: " + orbitCount;
     }
 
 
