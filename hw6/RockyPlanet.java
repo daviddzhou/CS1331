@@ -24,7 +24,7 @@ public class RockyPlanet extends Planet {
                         double rad,
                         int orbits,
                         boolean canHaveLife) {
-        super(name, radius, orbitCount);
+        super(name, rad, orbitCount);
         hasLife = canHaveLife;
     }
 

@@ -21,7 +21,7 @@ public class GasGiant extends Planet {
     * @param storms the initial number of storms
     */
     public GasGiant(String name, double rad, int orbits, int storms) {
-        super(name, radius, orbitCount);
+        super(name, rad, orbitCount);
         this.numStorms = storms;
     }
 

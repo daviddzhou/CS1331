@@ -4,7 +4,7 @@
 */
 
 public class Planet extends AstronomicalObject {
-    protected static final double radius;
+    protected final double RADIUS;
     protected static int orbitCount;
 
     /**
@@ -12,16 +12,18 @@ public class Planet extends AstronomicalObject {
     */
     public Planet() {
         super();
+        RADIUS = 0;
     }
 
     /**
     * Default Planet constructor
     * @param name name of the AstronomicalObject
-    * @param rad the unchangeable radius that is entered
+    * @param rad the unchangeable RADIUS that is entered
     * @param orbits the initial orbitCount
     */
     public Planet(String name, double rad, int orbits) {
         super(name);
+        RADIUS = rad;
         orbitCount = orbits;
     }
 
@@ -32,17 +34,13 @@ public class Planet extends AstronomicalObject {
     @Override
     public String toString() {
         return "Planet" + super.toString() + "." + "Radius:"
-            + radius + "." + "Orbits completed:" + orbitCount;
+            + RADIUS + "." + "Orbits completed:" + orbitCount;
     }
 
     //how can you implement if your star cannot have planets
 
-    /**
-    * @return the orbitCount that is newly incremented
-    */
-    public int orbit() {
+    public void orbit() {
         orbitCount++;
-        return orbitCount;
     }
 
     /**
