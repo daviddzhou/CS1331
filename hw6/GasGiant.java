@@ -1,4 +1,5 @@
 /**
+* Subclass of Planet that describes GasGiant
 * @author David Zhou
 * @version 1.0
 */

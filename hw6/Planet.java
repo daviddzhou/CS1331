@@ -1,4 +1,5 @@
 /**
+* Subclass of AstronomicalObject that describes planet
 * @author David Zhou
 * @version 1.0
 */

@@ -1,4 +1,5 @@
 /**
+* Subclass of AstronomicalObject that describes star
 * @author David Zhou
 * @version 1.0
 */
@@ -6,7 +7,6 @@
 public class Star extends AstronomicalObject {
     private Color color;
     private boolean isSun;
-    private String isSunString;
     private int id;
 
 

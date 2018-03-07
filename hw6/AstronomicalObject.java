@@ -1,4 +1,5 @@
 /**
+*Class that describes superclass AstronomicalObject
 * @author David Zhou
 * @version 1.0
 */
@@ -17,7 +18,6 @@ public class AstronomicalObject {
     * @param name name of the AstronomicalObject
     */
     public AstronomicalObject(String name) {
-        super();
         this.name = name;
     }
 
