@@ -24,7 +24,7 @@ public class RockyPlanet extends Planet {
                         double rad,
                         int orbits,
                         boolean canHaveLife) {
-        super(name, rad, orbitCount);
+        super(name, rad, orbits);
         hasLife = canHaveLife;
     }
 
@@ -33,7 +33,7 @@ public class RockyPlanet extends Planet {
     */
     @Override
     public void orbit() {
-        orbitCount++;
+        super.orbit();
         if (hasLife) {
             hasLife = false;
         } else {
@@ -48,10 +48,10 @@ public class RockyPlanet extends Planet {
     @Override
     public String toString() {
         if (hasLife) {
-            return "RockyPlanet " + super.toString()
+            return "Rocky Planet " + super.toString()
                 + " This planet can have life.";
         } else {
-            return "RockyPlanet " + super.toString()
+            return "Rocky Planet " + super.toString()
                 + " This planet cannot have life.";
         }
     }

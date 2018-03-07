@@ -24,7 +24,8 @@ public class Star extends AstronomicalObject {
     */
     public Star(String name, int id) {
         super(name);
-        id = id;
+        this.id = id;
+        color = Color.getColorById(id);
     }
 
     /**
@@ -32,13 +33,7 @@ public class Star extends AstronomicalObject {
     */
     public Color getColor() {
         color = Color.getColorById(id);
-        if (color == Color.RED) {
-            isSun = false;
-            return color;
-        } else {
-            isSun = true;
-            return color;
-        }
+        return color;
     }
 
     /**
@@ -47,6 +42,11 @@ public class Star extends AstronomicalObject {
     */
     @Override
     public String toString() {
+        if (color == Color.RED) {
+            isSun = false;
+        } else {
+            isSun = true;
+        }
         if (isSun) {
             return "Star " + name + ". " + "Color: " + color + ". "
                 + "This Star can have planets";

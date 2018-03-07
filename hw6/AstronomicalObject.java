@@ -27,7 +27,7 @@ public class AstronomicalObject {
     */
     @Override
     public String toString() {
-        return name + ".";
+        return name + ". ";
     }
 
     /**
