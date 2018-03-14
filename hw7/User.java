@@ -1,4 +1,4 @@
-public class User {
+public abstract class User implements Comparable<User> {
     private String name;
     private static int id = 0;
 
@@ -39,5 +39,16 @@ public class User {
 	public static int getId() {
 		return id;
 	}
+
+    @Override
+    public int compareTo(User other) {
+        if (User.id > other.getId()) {
+            return 1;
+        } else if (User.id < other.getId()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 
 }

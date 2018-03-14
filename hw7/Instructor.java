@@ -34,7 +34,7 @@ public class Instructor extends User implements Alumnus {
 	* Returns value of hasTenure
 	* @return
 	*/
-	public boolean isHasTenure() {
+	public boolean getHasTenure() {
 		return hasTenure;
 	}
 
@@ -53,4 +53,25 @@ public class Instructor extends User implements Alumnus {
 	public int getGradYear() {
 		return gradYear;
 	}
+
+    @Override
+    public int compareTo(Instructor other) {
+        try {
+            if (this.hasTenure == other.getHasTenure()) {
+                if (this.yearsTeaching == other.getYearsTeaching()) {
+                    super.compareTo(other);
+                } else if (this.yearsTeaching > other.getYearsTeaching()) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            } else if (this.hasTenure) {
+                return 1;
+            }
+            return -1;
+        } catch (Exception e) {
+            System.out.println("Cannot be casted to Instructor!");
+            return 0;
+        }
+    }
 }

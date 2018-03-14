@@ -1,18 +1,9 @@
 public interface Alumnus {
-    public String getAlmaMater() {
-        return almaMater;
-    }
+    String getAlmaMater();
+    
+    int getGradYear();
 
-    public int getGradYear() {
-        return gradYear;
-    }
+    String getName();
 
-    public String getName() {
-        super(name);
-        return name;
-    }
-
-    public String getType() {
-        return //how to implement the string rep of course
-    }
+    String getType();
 }

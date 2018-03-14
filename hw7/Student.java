@@ -1,4 +1,4 @@
-public class Student extends User {
+public abstract class Student extends User {
     private int creditHours;
     private boolean inState;
 
@@ -34,4 +34,14 @@ public class Student extends User {
 	public boolean isInState() {
 		return inState;
 	}
+
+    @Override
+    public int compareTo(Student other) {
+        try {
+            if ()
+        } catch (Exception e) {
+            System.out.println("Cannot be casted to Student!");
+            return 0;
+        }
+    }
 }
