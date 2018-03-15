@@ -17,13 +17,15 @@ public abstract class Student extends User {
 
 	/**
 	* Default Student constructor
+    * @param name name of the users
+    * @param creditHours num creditHours they have
+    * @param inState whether they are instate
 	*/
 	public Student(String name, int creditHours, boolean inState) {
 		super(name);
 		this.creditHours = creditHours;
 		this.inState = inState;
 	}
-    //same as the previous class how do you create a nonconcrete object
 
 	/**
 	* Returns value of creditHours
@@ -46,17 +48,17 @@ public abstract class Student extends User {
     *@return comparable integer
     */
     @Override
-    public int compareTo (User other) {
+    public int compareTo(User other) {
         if (other instanceof Student) {
             Student casted = (Student) other;
-            if (this.creditHours < casted.getCreditHours()) {
+            if (creditHours < casted.getCreditHours()) {
                 return 1;
-            } else if (this.creditHours > casted.getCreditHours()) {
+            } else if (creditHours > casted.getCreditHours()) {
                 return -1;
             } else {
-                if (this.inState == casted.getInState()) {
+                if (inState == casted.getInState()) {
                     super.compareTo(other);
-                } else if(this.inState) {
+                } else if(inState) {
                     return 1;
                 } else if (casted.getInState()) {
                     return -1;

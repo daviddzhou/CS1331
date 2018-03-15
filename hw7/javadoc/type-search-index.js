@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"Alumnus"},{"p":"<Unnamed>","l":"Course"},{"p":"<Unnamed>","l":"Grad"},{"p":"<Unnamed>","l":"GSquare"},{"p":"<Unnamed>","l":"Instructor"},{"p":"<Unnamed>","l":"Student"},{"p":"<Unnamed>","l":"Undergrad"},{"p":"<Unnamed>","l":"User"},{"p":"<Unnamed>","l":"Year"}]

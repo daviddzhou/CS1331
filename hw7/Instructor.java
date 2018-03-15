@@ -19,6 +19,11 @@ public class Instructor extends User implements Alumnus {
 
     /**
     * Default Instructor constructor
+    * @param name name of the users
+    * @param yearsTeaching num years they have taught
+    * @param hasTenure boolean val of tenure
+    * @param almaMater name of their alma Mater
+    * @param gradYear year they graduated
     */
     public Instructor(String name, int yearsTeaching, boolean hasTenure, String almaMater, int gradYear) {
         super(name);
@@ -68,18 +73,18 @@ public class Instructor extends User implements Alumnus {
     public int compareTo(User other) {
         if (other instanceof Instructor) {
             Instructor casted = (Instructor) other;
-            if (this.hasTenure == casted.getHasTenure()) {
-                if (this.yearsTeaching > casted.getYearsTeaching()) {
+            if (hasTenure == casted.getHasTenure()) {
+                if (yearsTeaching > casted.getYearsTeaching()) {
                     return 1;
-                } else if(this.yearsTeaching < casted.getYearsTeaching()) {
+                } else if(yearsTeaching < casted.getYearsTeaching()) {
                     return -1;
-                } else if(this.yearsTeaching == casted.getYearsTeaching()) {
+                } else if(yearsTeaching == casted.getYearsTeaching()) {
                     return 0;
                 } else {
                     super.compareTo(other);
                 }
-            } else if(this.hasTenure != casted.getHasTenure()) {
-                if (this.hasTenure) {
+            } else if(hasTenure != casted.getHasTenure()) {
+                if (hasTenure) {
                     return 1;
                 } else if(casted.getHasTenure()) {
                     return -1;

@@ -7,12 +7,7 @@
 public abstract class User implements Comparable<User> {
     private String name;
     private int id;
-    private static int assign = 0;
-
-    public String getType() {
-        String className = this.getClass().getName();
-        return className;
-    }
+    private static int assign;
 
 	/**
 	* Default empty User constructor
@@ -20,9 +15,9 @@ public abstract class User implements Comparable<User> {
 	public User() {
 	}
 
-    // what does it mean by users are not concrete objects -> does it mean they are abstract
     /**
 	* Default User constructor
+    * @param name name of the user
 	*/
 	public User(String name) {
 		this.name = name;
@@ -30,6 +25,12 @@ public abstract class User implements Comparable<User> {
         this.id = assign;
 	}
 
+    /**
+    * @return the class type
+    */
+    public String getType() {
+        return this.getClass().getName();
+    }
 
 	/**
 	* Returns value of name
@@ -53,9 +54,9 @@ public abstract class User implements Comparable<User> {
     */
     @Override
     public int compareTo(User other) {
-        if (id > other.getId()) {
+        if (id > other.id) {
             return 1;
-        } else if (id < other.getId()) {
+        } else if (id < other.id) {
             return -1;
         } else {
             return 0;

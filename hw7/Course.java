@@ -18,6 +18,10 @@ public class Course implements Comparable<Course>{
 
 	/**
 	* Default Course constructor
+    *@param name name of Courses
+    *@param courseCode int code of Courses
+    *@param instructor instructor of class Instructors
+    *@param students students array
 	*/
 	public Course(String name, int courseCode, Instructor instructor, Student[] students) {
 		this.name = name;
@@ -26,7 +30,9 @@ public class Course implements Comparable<Course>{
 		this.students = students;
 	}
 
-    //implement actual method to get the Insctuctor name
+    /**
+    * @return name of the Instructor
+    */
     public String getInstructorName() {
         return instructor.getName();
     }

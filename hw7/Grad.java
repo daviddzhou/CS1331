@@ -17,7 +17,12 @@ public class Grad extends Student implements Alumnus {
 
 	/**
 	* Default Grad constructor
-	*/
+    * @param name name of the users
+    * @param creditHours num creditHours they have
+    * @param inState whether they are instate
+    * @param almaMater the almaMater of the grad
+    * @param gradYear the year that they graduated
+    */
 	public Grad(String name, int creditHours, boolean inState, String almaMater, int gradYear) {
 		super(name, creditHours, inState);
 		this.almaMater = almaMater;
