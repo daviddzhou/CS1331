@@ -42,7 +42,7 @@ public class Undergrad extends Student {
                 return 1;
             } else if (year.ordinal() > casted.getYear().ordinal()) {
                 return -1;
-            } else if (year.ordinal() == casted.getYear().ordinal()){
+            } else {
                 super.compareTo(other);
             }
         } else {
