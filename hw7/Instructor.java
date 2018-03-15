@@ -1,9 +1,9 @@
 /**
- * The main driver for Instructor
- *
- * @author David Zhou
- * @version 1.0
- */
+* The main driver for Instructor
+*
+* @author David Zhou
+* @version 1.0
+*/
 public class Instructor extends User implements Alumnus {
     private int yearsTeaching;
     private boolean hasTenure;
@@ -25,7 +25,8 @@ public class Instructor extends User implements Alumnus {
     * @param almaMater name of their alma Mater
     * @param gradYear year they graduated
     */
-    public Instructor(String name, int yearsTeaching, boolean hasTenure, String almaMater, int gradYear) {
+    public Instructor(String name, int yearsTeaching, boolean hasTenure,
+        String almaMater, int gradYear) {
         super(name);
         this.yearsTeaching = yearsTeaching;
         this.hasTenure = hasTenure;
@@ -76,23 +77,23 @@ public class Instructor extends User implements Alumnus {
             if (hasTenure == casted.getHasTenure()) {
                 if (yearsTeaching > casted.getYearsTeaching()) {
                     return 1;
-                } else if(yearsTeaching < casted.getYearsTeaching()) {
+                } else if (yearsTeaching < casted.getYearsTeaching()) {
                     return -1;
-                } else if(yearsTeaching == casted.getYearsTeaching()) {
-                    return 0;
                 } else {
-                    super.compareTo(other);
+                    return super.compareTo(other);
                 }
-            } else if(hasTenure != casted.getHasTenure()) {
+            } else if (hasTenure != casted.getHasTenure()) {
                 if (hasTenure) {
                     return 1;
-                } else if(casted.getHasTenure()) {
+                } else {
                     return -1;
                 }
             } else {
-                return this.getClass().getName().compareTo(other.getClass().getName());
+                return super.compareTo(other);
             }
+        } else {
+            return this.getClass().getName()
+                .compareTo(other.getClass().getName());
         }
-        return 0;
     }
 }
