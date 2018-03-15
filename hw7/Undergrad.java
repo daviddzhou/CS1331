@@ -1,3 +1,9 @@
+/**
+ * The main driver for Undergrad
+ *
+ * @author David Zhou
+ * @version 1.0
+ */
 public class Undergrad extends Student {
     private Year year;
 
@@ -18,12 +24,17 @@ public class Undergrad extends Student {
 
 	/**
 	* Returns value of year
-	* @return
+	* @return value of year
 	*/
 	public Year getYear() {
         return year;
 	}
 
+    /**
+    *@param other the user defined
+    *@return comparable integer
+    */
+    @Override
     public int compareTo(User other) {
         if (other instanceof Undergrad) {
             Undergrad casted = (Undergrad) other;
@@ -31,7 +42,7 @@ public class Undergrad extends Student {
                 return 1;
             } else if (year.ordinal() > casted.getYear().ordinal()) {
                 return -1;
-            } else {
+            } else if (year.ordinal() == casted.getYear().ordinal()){
                 super.compareTo(other);
             }
         } else {

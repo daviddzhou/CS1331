@@ -1,3 +1,9 @@
+/**
+ * The main driver for Instructor
+ *
+ * @author David Zhou
+ * @version 1.0
+ */
 public class Instructor extends User implements Alumnus {
     private int yearsTeaching;
     private boolean hasTenure;
@@ -24,7 +30,7 @@ public class Instructor extends User implements Alumnus {
 
     /**
     * Returns value of yearsTeaching
-    * @return
+    * @return value of yearsTeaching
     */
     public int getYearsTeaching() {
         return yearsTeaching;
@@ -32,7 +38,7 @@ public class Instructor extends User implements Alumnus {
 
     /**
     * Returns value of hasTenure
-    * @return
+    * @return value of hasTenure
     */
     public boolean getHasTenure() {
         return hasTenure;
@@ -40,7 +46,7 @@ public class Instructor extends User implements Alumnus {
 
     /**
     * Returns value of almaMater
-    * @return
+    * @return value of almaMater
     */
     public String getAlmaMater() {
         return almaMater;
@@ -48,12 +54,17 @@ public class Instructor extends User implements Alumnus {
 
     /**
     * Returns value of gradYear
-    * @return
+    * @return value of gradYear
     */
     public int getGradYear() {
         return gradYear;
     }
 
+    /**
+    *@param other the user defined
+    *@return comparable integer
+    */
+    @Override
     public int compareTo(User other) {
         if (other instanceof Instructor) {
             Instructor casted = (Instructor) other;

@@ -1,3 +1,9 @@
+/**
+ * The main driver Course
+ *
+ * @author David Zhou
+ * @version 1.0
+ */
 public class Course implements Comparable<Course>{
     private String name;
     private int courseCode;
@@ -27,7 +33,7 @@ public class Course implements Comparable<Course>{
 
 	/**
 	* Returns value of name
-	* @return
+	* @return value of name
 	*/
 	public String getName() {
 		return name;
@@ -35,7 +41,7 @@ public class Course implements Comparable<Course>{
 
 	/**
 	* Returns value of courseCode
-	* @return
+	* @return value of courseCode
 	*/
 	public int getCourseCode() {
 		return courseCode;
@@ -43,19 +49,32 @@ public class Course implements Comparable<Course>{
 
 	/**
 	* Returns value of instructor
-	* @return
+	* @return value of instructor
 	*/
 	public Instructor getInstructor() {
 		return instructor;
 	}
 
+    /**
+    * Returns value of students
+    * @return value of Students
+    */
+    public Student[] getStudents() {
+        return students;
+    }
+
+    /**
+    *@param other the course defined
+    *@return comparable integer
+    */
+    @Override
     public int compareTo(Course other) {
         if (this.courseCode > other.getCourseCode()) {
             return 1;
         } else if (this.courseCode < other.getCourseCode()) {
             return -1;
         } else {
-            return (this.getInstructorName().compareTo(other.getInstructorName()));
+            return (name.compareTo(other.getInstructorName()));
         }
     }
 }

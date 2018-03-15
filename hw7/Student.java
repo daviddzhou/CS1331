@@ -1,3 +1,9 @@
+/**
+ * The main driver for Student
+ *
+ * @author David Zhou
+ * @version 1.0
+ */
 public abstract class Student extends User {
     private int creditHours;
     private boolean inState;
@@ -21,7 +27,7 @@ public abstract class Student extends User {
 
 	/**
 	* Returns value of creditHours
-	* @return
+	* @return value of creditHours
 	*/
 	public int getCreditHours() {
 		return creditHours;
@@ -29,12 +35,17 @@ public abstract class Student extends User {
 
 	/**
 	* Returns value of inState
-	* @return
+	* @return value of inState
 	*/
 	public boolean getInState() {
 		return inState;
 	}
 
+    /**
+    *@param other the user defined
+    *@return comparable integer
+    */
+    @Override
     public int compareTo (User other) {
         if (other instanceof Student) {
             Student casted = (Student) other;

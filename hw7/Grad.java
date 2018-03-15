@@ -1,3 +1,9 @@
+/**
+ * The main driver for Grad
+ *
+ * @author David Zhou
+ * @version 1.0
+ */
 public class Grad extends Student implements Alumnus {
     private String almaMater;
     private int gradYear;
@@ -20,7 +26,7 @@ public class Grad extends Student implements Alumnus {
 
 	/**
 	* Returns value of almaMater
-	* @return
+	* @return value of almaMater
 	*/
 	public String getAlmaMater() {
 		return almaMater;
@@ -28,12 +34,17 @@ public class Grad extends Student implements Alumnus {
 
 	/**
 	* Returns value of gradYear
-	* @return
+	* @return value of gradYear
 	*/
 	public int getGradYear() {
 		return gradYear;
 	}
 
+    /**
+    *@param other the user defined
+    *@return comparable integer
+    */
+    @Override
     public int compareTo(User other) {
         if (other instanceof Grad) {
             Grad casted = (Grad) other;

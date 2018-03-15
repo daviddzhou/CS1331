@@ -1,6 +1,13 @@
+/**
+ * The main driver for User
+ *
+ * @author David Zhou
+ * @version 1.0
+ */
 public abstract class User implements Comparable<User> {
     private String name;
-    private static int id = 0;
+    private int id;
+    private static int assign;
 
     public String getType() {
         String className = this.getClass().getName();
@@ -19,14 +26,14 @@ public abstract class User implements Comparable<User> {
 	*/
 	public User(String name) {
 		this.name = name;
-        id++;
-        User.id = id;
+        assign++;
+        this.id = assign;
 	}
 
 
 	/**
 	* Returns value of name
-	* @return
+	* @return value fo name
 	*/
 	public String getName() {
 		return name;
@@ -34,16 +41,21 @@ public abstract class User implements Comparable<User> {
 
 	/**
 	* Returns value of id
-	* @return
+	* @return value of id
 	*/
-	public static int getId() {
+	public int getId() {
 		return id;
 	}
 
+    /**
+    *@param other the user defined
+    *@return comparable integer
+    */
+    @Override
     public int compareTo(User other) {
-        if (User.id > other.getId()) {
+        if (id > other.getId()) {
             return 1;
-        } else if (User.id < other.getId()) {
+        } else if (id < other.getId()) {
             return -1;
         } else {
             return 0;
