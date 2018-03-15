@@ -7,7 +7,7 @@
 public abstract class User implements Comparable<User> {
     private String name;
     private int id;
-    private static int assign;
+    private static int assign = 0;
 
     public String getType() {
         String className = this.getClass().getName();
