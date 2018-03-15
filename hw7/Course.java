@@ -21,8 +21,8 @@ public class Course implements Comparable<Course>{
 	}
 
     //implement actual method to get the Insctuctor name
-    public Instructor getInstructorName() {
-        return instructor.getName;
+    public String getInstructorName() {
+        return instructor.getName();
     }
 
 	/**
@@ -49,11 +49,10 @@ public class Course implements Comparable<Course>{
 		return instructor;
 	}
 
-    @Override
     public int compareTo(Course other) {
-        if (courseCode > other.getCourseCode()) {
+        if (this.courseCode > other.getCourseCode()) {
             return 1;
-        } else if (courseCode < other.getCourseCode()) {
+        } else if (this.courseCode < other.getCourseCode()) {
             return -1;
         } else {
             return (this.getInstructorName().compareTo(other.getInstructorName()));

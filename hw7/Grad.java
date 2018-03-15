@@ -12,7 +12,7 @@ public class Grad extends Student implements Alumnus {
 	/**
 	* Default Grad constructor
 	*/
-	public Grad(String almaMater, int gradYear, String name, int creditHours, boolean inState) {
+	public Grad(String name, int creditHours, boolean inState, String almaMater, int gradYear) {
 		super(name, creditHours, inState);
 		this.almaMater = almaMater;
 		this.gradYear = gradYear;
@@ -33,4 +33,20 @@ public class Grad extends Student implements Alumnus {
 	public int getGradYear() {
 		return gradYear;
 	}
+
+    public int compareTo(User other) {
+        if (other instanceof Grad) {
+            Grad casted = (Grad) other;
+            if (gradYear < casted.getGradYear()) {
+                return -1;
+            } else if(gradYear > casted.getGradYear()) {
+                return 1;
+            } else {
+                super.compareTo(other);
+            }
+        } else {
+            return this.getClass().getName().compareTo(other.getClass().getName());
+        }
+        return 0;
+    }
 }

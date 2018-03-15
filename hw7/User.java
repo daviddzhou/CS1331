@@ -2,7 +2,7 @@ public abstract class User implements Comparable<User> {
     private String name;
     private static int id = 0;
 
-    private String getType() {
+    public String getType() {
         String className = this.getClass().getName();
         return className;
     }
@@ -40,7 +40,6 @@ public abstract class User implements Comparable<User> {
 		return id;
 	}
 
-    @Override
     public int compareTo(User other) {
         if (User.id > other.getId()) {
             return 1;

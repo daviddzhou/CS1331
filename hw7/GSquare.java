@@ -1,3 +1,4 @@
+// Welcome to javafx, the land of imports :p
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +27,7 @@ public class GSquare extends Application {
     private ArrayList<Course> courses = new ArrayList<>();
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Instructor> instructors = new ArrayList<>();
-    private ArrayList<Alumni> alumni = new ArrayList<>();
+    private ArrayList<Alumnus> alumni = new ArrayList<>();
     private ArrayList<Student> students = new ArrayList<>();
     private ArrayList<Undergrad> undergrads = new ArrayList<>();
     private ArrayList<Grad> grads = new ArrayList<>();
@@ -40,13 +41,13 @@ public class GSquare extends Application {
         "Python", "Chemistry", "History", "Memeology"};
 
 
-        // User Names
-    private static String[] firstNames = {"Sophia ", "Liam ", "Olivia ",
-        "Aiden ", "Emma ", "Timothy ", "Ava ", "Arnold "};
+    // User Names
+    private static String[] firstNames = {"Sophia", "Liam", "Olivia",
+        "Aiden", "Emma", "Timothy", "Ava", "Arnold"};
     private static String[] lastNames = {"Clark", "Hall", "Miller", "Smith",
         "Walker", "Adams", "Scott"};
 
-        // Schools
+    // Schools
     private static String[] schools = {"Georgia Tech", "MIT", "Stanford",
         "UCSD", "Yale", "UGA", "USC", "Harvard"};
 
@@ -57,9 +58,10 @@ public class GSquare extends Application {
      * @return A new random instructor
      */
     private Instructor genInstructor() {
-        String name = firstNames[rand.nextInt(firstNames.length)]
-            + lastNames[rand.nextInt(lastNames.length)];
+        String name = lastNames[rand.nextInt(lastNames.length)] + ", "
+            + firstNames[rand.nextInt(firstNames.length)];
         String school = schools[rand.nextInt(schools.length)];
+        // If you get an error / exception here, check your constructor!
         Instructor instructor = new Instructor(name, rand.nextInt(30) + 1,
             rand.nextBoolean(), school, rand.nextInt(48) + 1960);
         instructors.add(instructor);
@@ -75,16 +77,18 @@ public class GSquare extends Application {
      * @return A new random student
      */
     private Student genStudent() {
-        String name = firstNames[rand.nextInt(firstNames.length)]
-            + lastNames[rand.nextInt(lastNames.length)];
+        String name = lastNames[rand.nextInt(lastNames.length)] + ", "
+            + firstNames[rand.nextInt(firstNames.length)];
         Student student;
         if (rand.nextDouble() > .2) {
             Year standing = Year.values()[rand.nextInt(Year.values().length)];
+            // If you get an error / exception here, check your constructor!
             student = new Undergrad(name, rand.nextInt(150),
                 rand.nextBoolean(), standing);
             undergrads.add((Undergrad) student);
         } else {
             String school = schools[rand.nextInt(schools.length)];
+            // If you get an error / exception here, check your constructor!
             student = new Grad(name, rand.nextInt(150), rand.nextBoolean(),
                 school, rand.nextInt(38) + 1980);
             grads.add((Grad) student);
@@ -110,6 +114,7 @@ public class GSquare extends Application {
             for (int j = 0; j < newStudents.length; j++) {
                 newStudents[j] = genStudent();
             }
+            // If you get an error / exception here, check your constructor!
             courses.add(new Course(name, code, genInstructor(), newStudents));
         }
     }
@@ -122,9 +127,12 @@ public class GSquare extends Application {
         BorderPane root = new BorderPane();
 
         // Sort Everything
+        // If you get exceptions from these lines, check your
+        // compareTo implementation
         Collections.sort(courses);
         Collections.sort(users);
         Collections.sort(instructors);
+        // Don't do this normally, this is a hack for this specific situation
         Collections.sort(alumni, (a, b) -> ((User) a).compareTo((User) b));
         Collections.sort(students);
         Collections.sort(undergrads);
@@ -137,8 +145,8 @@ public class GSquare extends Application {
         TableView<Instructor> instructorTable =
             createInstructorTable(instructors);
 
-        // Alumni Table
-        TableView<Alumni> alumniTable = createAlumniTable(alumni);
+        // Alumnus Table
+        TableView<Alumnus> alumniTable = createAlumnusTable(alumni);
 
         // Student Table
         TableView<Student> studentTable = createStudentTable(students);
@@ -155,8 +163,12 @@ public class GSquare extends Application {
         Button viewButton = new Button("View Selected");
         viewButton.setOnAction(e -> {
                 Course c = courseTable.getSelectionModel().getSelectedItem();
+                if (c == null) {
+                    return;
+                }
                 ArrayList<Student> studentList = new ArrayList<>();
                 studentList.addAll(Arrays.asList(c.getStudents()));
+                Collections.sort(studentList);
                 root.setCenter(createStudentTable(studentList));
             });
 
@@ -174,7 +186,7 @@ public class GSquare extends Application {
         userButton.setOnAction(e -> root.setCenter(userTable));
         Button instructorButton = new Button("View Instructors");
         instructorButton.setOnAction(e -> root.setCenter(instructorTable));
-        Button alumniButton = new Button("View Alumni");
+        Button alumniButton = new Button("View Alumnus");
         alumniButton.setOnAction(e -> root.setCenter(alumniTable));
         Button studentButton = new Button("View Students");
         studentButton.setOnAction(e -> root.setCenter(studentTable));
@@ -207,8 +219,11 @@ public class GSquare extends Application {
         nameCol.setCellValueFactory(new PropertyValueFactory("name"));
         TableColumn<User, Integer> idCol = new TableColumn<>("ID");
         idCol.setCellValueFactory(new PropertyValueFactory("id"));
+        TableColumn<User, String> typeCol =
+            new TableColumn<>("Type");
+        typeCol.setCellValueFactory(new PropertyValueFactory("type"));
 
-        table.getColumns().setAll(nameCol, idCol);
+        table.getColumns().setAll(nameCol, idCol, typeCol);
         return table;
     }
 
@@ -233,38 +248,42 @@ public class GSquare extends Application {
         TableColumn<Instructor, Boolean> tenureCol =
             new TableColumn<>("Tenured");
         tenureCol.setCellValueFactory(new PropertyValueFactory("hasTenure"));
-        TableColumn<Instructor, String> almaMatterCol =
+        TableColumn<Instructor, String> almaMaterCol =
             new TableColumn<>("Alma Matter");
-        almaMatterCol.setCellValueFactory(
-            new PropertyValueFactory("almaMatter"));
+        almaMaterCol.setCellValueFactory(
+            new PropertyValueFactory("almaMater"));
         TableColumn<Instructor, Integer> gradYearCol =
             new TableColumn<>("Graduation Year");
         gradYearCol.setCellValueFactory(new PropertyValueFactory("gradYear"));
 
         table.getColumns().setAll(nameCol, idCol, teachingCol, tenureCol,
-            almaMatterCol, gradYearCol);
+            almaMaterCol, gradYearCol);
         return table;
     }
 
-    private TableView<Alumni> createAlumniTable(ArrayList<Alumni> tableAlumni) {
+    private TableView<Alumnus> createAlumnusTable(
+            ArrayList<Alumnus> tableAlumnus) {
         // Setup table
-        TableView<Alumni> table = new TableView<Alumni>();
-        ObservableList<Alumni> obsAlumnis =
-            FXCollections.observableArrayList(tableAlumni);
-        table.setItems(obsAlumnis);
+        TableView<Alumnus> table = new TableView<Alumnus>();
+        ObservableList<Alumnus> obsAlumnuss =
+            FXCollections.observableArrayList(tableAlumnus);
+        table.setItems(obsAlumnuss);
 
         // Create table columns
-        TableColumn<Alumni, String> nameCol = new TableColumn<>("Name");
+        TableColumn<Alumnus, String> nameCol = new TableColumn<>("Name");
         nameCol.setCellValueFactory(new PropertyValueFactory("name"));
-        TableColumn<Alumni, String> almaMatterCol =
+        TableColumn<Alumnus, String> almaMaterCol =
             new TableColumn<>("Alma Matter");
-        almaMatterCol.setCellValueFactory(
-            new PropertyValueFactory("almaMatter"));
-        TableColumn<Alumni, Integer> gradYearCol =
+        almaMaterCol.setCellValueFactory(
+            new PropertyValueFactory("almaMater"));
+        TableColumn<Alumnus, Integer> gradYearCol =
             new TableColumn<>("Graduation Year");
         gradYearCol.setCellValueFactory(new PropertyValueFactory("gradYear"));
+        TableColumn<Alumnus, String> typeCol =
+            new TableColumn<>("Type");
+        typeCol.setCellValueFactory(new PropertyValueFactory("type"));
 
-        table.getColumns().setAll(nameCol, almaMatterCol, gradYearCol);
+        table.getColumns().setAll(nameCol, almaMaterCol, gradYearCol, typeCol);
         return table;
     }
 
@@ -288,9 +307,13 @@ public class GSquare extends Application {
         TableColumn<Student, Boolean> inStateCol =
             new TableColumn<>("In State");
         inStateCol.setCellValueFactory(new PropertyValueFactory("inState"));
+        TableColumn<Student, String> typeCol =
+            new TableColumn<>("Type");
+        typeCol.setCellValueFactory(new PropertyValueFactory("type"));
 
 
-        table.getColumns().setAll(nameCol, idCol, creditCol, inStateCol);
+        table.getColumns().setAll(nameCol, idCol, creditCol,
+            inStateCol, typeCol);
         return table;
     }
 
@@ -340,17 +363,17 @@ public class GSquare extends Application {
         creditCol.setCellValueFactory(new PropertyValueFactory("creditHours"));
         TableColumn<Grad, Boolean> inStateCol = new TableColumn<>("In State");
         inStateCol.setCellValueFactory(new PropertyValueFactory("inState"));
-        TableColumn<Grad, String> almaMatterCol =
+        TableColumn<Grad, String> almaMaterCol =
             new TableColumn<>("Alma Matter");
-        almaMatterCol.setCellValueFactory(
-            new PropertyValueFactory("almaMatter"));
+        almaMaterCol.setCellValueFactory(
+            new PropertyValueFactory("almaMater"));
         TableColumn<Grad, Integer> gradYearCol =
             new TableColumn<>("Graduation Year");
         gradYearCol.setCellValueFactory(new PropertyValueFactory("gradYear"));
 
         // Add table columns and return
         table.getColumns().setAll(nameCol, idCol, creditCol, inStateCol,
-            almaMatterCol, gradYearCol);
+            almaMaterCol, gradYearCol);
         return table;
     }
 
