@@ -1,0 +1,4 @@
+The beginning. This is the middle sentence. This is the end.
+1234 1234 1234? This is another line of input.
+Here is another. Happy happy joy joy!
+Wow, this is a really long sentence with a whole lot of words in it and I hope I get it right.
