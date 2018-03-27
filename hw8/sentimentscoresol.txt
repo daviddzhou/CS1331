@@ -1,0 +1,45 @@
+1) make a function named findWordCount
+
+int findWordCount(String source, String targetWord)
+{
+int count=0;
+int index = source.indexOf(targetWord);
+while (index != -1) {
+    count++;
+    source = source.substring(index + 1);
+    index = source.indexOf(targetWord);
+}
+    return count;
+}
+
+2) target count
+
+for (each word in the target file)
+{
+input = string from source file;
+int count = findWordCount(input, word);
+save the word, count into the targetCount.txt file
+
+}
+
+2) sentiment count
+
+int positiveCount = 0;
+String input = theSourceFileString;
+for ( each word in the theGood.txt)
+{
+   positiveCount += findWordCount(input, word);
+}
+
+
+int negativeCount = 0;
+
+for ( each word in the theBad.txt)
+{
+   negativeCount += findWordCount(input, word);
+
+}
+
+int totalSentimentScore = postiveCount - negativeCount;
+
+print out totalSentimentScore;
