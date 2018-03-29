@@ -1,19 +1,29 @@
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.ArrayList;
+/**
+*@author David Zhou
+*@version 1.0
+* this class contains methods to assist in text analyzation
+*/
 public class Checker extends TextCheck {
     // Initializing counters
     private static int goodCount;
     private static int badCount;
 
-
+    /**
+    *@param file linearized string of file contents
+    *@return number of sentences
+    */
     public static int sentenceAnalyze(String file) {
         String[] abb = file.split("\\s+");
+        String[] abbNorm = file.split("\\s+");
         String[] finalabb;
         int index = 0;
         String[] arrayAbb = {"Mr.", "Mrs.", "Ms.", "Dr.", "Jr.", "Sr.", "St.",
-            "Am.", "Pm.", "am.", "pm.", "Etc.", "Mt.", "Ct.", "Mon.", "Tue.", "Wed.",
-            "Thu.", "Fri.", "Sat.", "Sun.", "Jan.", "Feb.", "Mar.", "Jun.", "Jul.", "Apr.",
+            "Am.", "Pm.", "am.", "pm.", "Etc.", "Mt.", "Ct.",
+            "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun.",
+            "Jan.", "Feb.", "Mar.", "Jun.", "Jul.", "Apr.",
             "Aug.", "Oct.", "Nov.", "Dec.",
             "Ave.", "Ln.", "Pl.", "Pt.", "R.d", "A.S.A.P.", "R.S.V.P."};
         for (int i = 0; i < abb.length; i++) {
@@ -22,25 +32,50 @@ public class Checker extends TextCheck {
                     abb[i] = "_";
                 }
             }
-            System.out.println(abb[i]);
         }
 
-        String sentence1 = null;
-        ArrayList<String> sentences = new ArrayList<String>();
-        int counterforloop = 0;
-        for (int j = 0; j < abb.length; j++) {
-            if (abb[j].contains("?") || abb[j].contains("!") || abb[j].contains(".")) {
-                index = j;
-                for (int k = counterforloop; k < index; k++) {
-                    sentence1 += abb[k];
-                }
-                counterforloop = j;
-                sentences.add(sentence1);
+        boolean delPunct = false;
+        for (int i = 0; i < abb.length; i++) {
+            if (abb[i].charAt(0) == '\"'
+                && !(abb[i].charAt(abb[i].length() - 1) == '\"')) {
+                delPunct = true;
+            } else if (abb[i].charAt(abb[i].length() - 1) == '\"') {
+                delPunct = false;
+            }
+
+            if (delPunct) {
+                abb[i] = abb[i].replaceAll("[\\.\\?\\!]", "a");
             }
         }
-        return sentences.size();
-    }
 
+        ArrayList<String> sentences = new ArrayList<String>();
+        ArrayList<Integer> punctIndex = new ArrayList<Integer>();
+        String sent = "";
+        for (int x = 0; x < abb.length; x++) {
+            if (abb[x].contains("?") || abb[x].contains("!")
+                || abb[x].contains(".")) {
+                punctIndex.add(x);
+            }
+        }
+
+        ArrayList<String> sentFinal = new ArrayList<String>();
+        String sentence = "";
+        for (int x = 0; x < abbNorm.length; x++) {
+            if (!punctIndex.contains(x)) {
+                sentence += " " + abbNorm[x];
+            } else {
+                sentence += " " + abbNorm[x];
+                sentFinal.add(sentence);
+                sentence = "";
+            }
+        }
+
+        return sentFinal.size();
+    }
+    /**
+    *@param file linearized string of file contents
+    *@return longest sentence
+    */
     public static String getLongestString(String file) {
         String[] sentenceList = file.split("[!?.]+");
         int maxLength = 0;
@@ -57,6 +92,11 @@ public class Checker extends TextCheck {
         return longestString;
     }
 
+    /**
+    *@param word word you are looking for
+    *@param str linearized string of file contents
+    *@return number of occurences of word
+    */
     public static int countSubstring(String word, String str) {
         int count = 0;
         Pattern p = Pattern.compile("\\b" + word + "\\b");
@@ -67,6 +107,10 @@ public class Checker extends TextCheck {
         return count;
     }
 
+    /**
+    *@param word word you are looking for
+    *@param str linearized string of file contents
+    */
     public static void findGoodWord(String word, String str) {
         Pattern p = Pattern.compile("\\b" + word + "\\b");
         Matcher m = p.matcher(str);
@@ -75,6 +119,10 @@ public class Checker extends TextCheck {
         }
     }
 
+    /**
+    *@param word word you are looking for
+    *@param str linearized string of file contents
+    */
     public static void findBadWord(String word, String str) {
         Pattern p = Pattern.compile("\\b" + word + "\\b");
         Matcher m = p.matcher(str);
@@ -85,7 +133,7 @@ public class Checker extends TextCheck {
 
     /**
     * Returns value of goodCount
-    * @return
+    * @return goodcount value
     */
     public static int getGoodCount() {
         return goodCount;
@@ -94,7 +142,7 @@ public class Checker extends TextCheck {
 
     /**
     * Returns value of badCount
-    * @return
+    * @return badcount value
     */
     public static int getBadCount() {
         return badCount;

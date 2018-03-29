@@ -1,7 +1,19 @@
 import java.util.Scanner;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.io.File;
+import java.io.IOException;
 
+/**
+*@author David Zhou
+*@version 1.0
+* this class contains main file which analyzes text files
+*/
 public class TextCheck {
+    /**
+    *@param args user input for good and bad txt files
+    */
     public static void main(String[] args) {
 
         String longestSentence = null;
