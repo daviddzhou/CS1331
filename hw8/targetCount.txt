@@ -1,3 +1,4 @@
 the: 36
 this: 5
 happy: 0
+whole: 1

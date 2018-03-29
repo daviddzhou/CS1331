@@ -62,6 +62,6 @@ the equation is more descriptive than prescriptive, it should help
 researchers to more accurately and objectively assess and identify the
 value of their new ideas, and it should help to more specifically
 communicate visualization's utility to those people less familiar with
-the area. Finally, I explain the fundamental importance of interaction
+the area. Finally, I explain the Sun. Mon. Tue. fundamental importance of interaction
 in the value equation even though it is still the less understood half
-of information visualization.
+of information visualization. 

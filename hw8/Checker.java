@@ -11,17 +11,18 @@ public class Checker extends TextCheck {
         String[] abb = file.split("\\s+");
         String[] finalabb;
         int index = 0;
-        String[] arrayAbb = {"mr", "mrs", "ms", "dr", "jr", "sr", "st",
-            "am", "pm", "etc", "mt", "ct", "fri", "mon", "tue", "wed",
-            "fri", "sat", "sun", "jan", "feb", "mar", "jun", "jul", "apr",
-            "aug", "oct", "nov", "dec", "in", "ft", " m", "cm", "km", "mi",
-            "ave", "ln", "pl", "pt", "rd", "a.s.a.p"};
+        String[] arrayAbb = {"Mr.", "Mrs.", "Ms.", "Dr.", "Jr.", "Sr.", "St.",
+            "Am.", "Pm.", "am.", "pm.", "Etc.", "Mt.", "Ct.", "Mon.", "Tue.", "Wed.",
+            "Thu.", "Fri.", "Sat.", "Sun.", "Jan.", "Feb.", "Mar.", "Jun.", "Jul.", "Apr.",
+            "Aug.", "Oct.", "Nov.", "Dec.",
+            "Ave.", "Ln.", "Pl.", "Pt.", "R.d", "A.S.A.P.", "R.S.V.P."};
         for (int i = 0; i < abb.length; i++) {
             for (String abbrev : arrayAbb) {
-                if (abb[i].toLowerCase() == abbrev) {
+                if (abb[i].equals(abbrev)) {
                     abb[i] = "_";
                 }
             }
+            System.out.println(abb[i]);
         }
 
         String sentence1 = null;
