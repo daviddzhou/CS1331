@@ -11,6 +11,8 @@ public class TextCheck {
         String line = null;
         String lowerFile = null;
         int totalSentimentScore;
+        int wordCount = 0;
+        int sentenceCount = 0;
 
 
         Scanner scanner = new Scanner(System.in);
@@ -19,35 +21,23 @@ public class TextCheck {
             System.out.println("What is the name of source file to analyze?");
             String fileName = scanner.nextLine();
             try {
-                // FileReader reads text files in the default encoding.
-                FileReader fileReader =
-                    new FileReader(fileName);
-
-                // Always wrap FileReader in BufferedReader.
-                BufferedReader bufferedReader =
-                    new BufferedReader(fileReader);
 
                 fileContents =
                     new Scanner(new File(fileName)).useDelimiter("\\Z").next();
 
-                longestSentence =
-                    SentenceCheck.getLongestString(fileContents);
+                String[] wordList = fileContents.split("\\s+");
+                wordCount = wordList.length;
 
-                while ((line = bufferedReader.readLine()) != null) {
-                    SentenceCheck.analyze(line);
-                    WordCheck.analyze(line);
-                }
+                sentenceCount = Checker.sentenceAnalyze(fileContents);
+
+                longestSentence =
+                    Checker.getLongestString(fileContents);
 
                 // Break the loop
                 retry = true;
-                // Always close files.
-                bufferedReader.close();
-            } catch (FileNotFoundException ex) {
+            } catch (IOException ex) {
                 System.err.println("Sorry, but that file doesnt exist."
                     + "Please retype the name.");
-                continue;
-            } catch (IOException ex) {
-                System.err.println("Error reading file");
                 continue;
             }
         }
@@ -78,7 +68,7 @@ public class TextCheck {
                 //read through the targetWord file
                 while ((word = bufferedTarget.readLine()) != null) {
                     int targetCount =
-                        targetCheck.countSubstring(word, lowerFile);
+                        Checker.countSubstring(word, lowerFile);
                     writer.println(word + ": " + targetCount);
                 }
 
@@ -87,11 +77,9 @@ public class TextCheck {
                 retry = true;
                 // Always close files.
                 bufferedTarget.close();
-            } catch (FileNotFoundException ex) {
+            } catch (IOException ex) {
                 System.err.println("Sorry, but that file doesnt exist."
                     + "Please retype the name.");
-            } catch (IOException ex) {
-                System.err.println("Error reading file");
             }
         }
 
@@ -104,28 +92,24 @@ public class TextCheck {
             BufferedReader bufferedGood = new BufferedReader(goodReader);
             //read through the goodWord file
             while ((word = bufferedGood.readLine()) != null) {
-                sentimentScore.findGoodWord(word, lowerFile);
+                Checker.findGoodWord(word, lowerFile);
             }
             // FileReader reads text files in the default encoding.
             FileReader badReader = new FileReader(badName);
             // Always wrap FileReader in BufferedReader.
             BufferedReader bufferedBad = new BufferedReader(badReader);
             while ((word = bufferedBad.readLine()) != null) {
-                sentimentScore.findBadWord(word, lowerFile);
+                Checker.findBadWord(word, lowerFile);
             }
-        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
             System.err.println("Sorry, but that file doesnt exist."
                 + "Please retype the name.");
-        } catch (IOException ex) {
-            System.err.println("Error reading file");
         }
 
         System.out.println("\nAnalyzing");
 
-        int sentenceCount = SentenceCheck.getSentenceCount();
-        int wordCount = WordCheck.getCountWord();
-        int positiveCount = sentimentScore.getGoodCount();
-        int negativeCount = sentimentScore.getBadCount();
+        int positiveCount = Checker.getGoodCount();
+        int negativeCount = Checker.getBadCount();
         totalSentimentScore = positiveCount - negativeCount;
 
         System.out.println("Your file contains " + wordCount
@@ -144,7 +128,6 @@ public class TextCheck {
             System.out.println("The sentiment analysis score is "
                 + totalSentimentScore);
         }
-
 
     }
 }

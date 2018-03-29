@@ -1,3 +1,0 @@
-the: 5
-this: 3
-happy: 2
