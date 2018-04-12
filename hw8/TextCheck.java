@@ -1,3 +1,4 @@
+//I worked on this with Frankie Kim, Daniel Lee, and Eric Yan
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
